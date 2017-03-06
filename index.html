@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Starting with XGBoost for Classification</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Starting with XGBoost for Classification">
+  <meta name="author" content="Pedro Magalhães Bernardo">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Starting with XGBoost for Classification</h1>
+    <h2></h2>
+    <p>Pedro Magalhães Bernardo<br/>March 05, 2017</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+
+.title-slide {
+  background-color: #FFFFFF;
+}
+</style>
+
+<h2>Introduction</h2>
+
+<p><br/>
+This work is the week 4 assignment for the Data Products course by Johns Hopkins University on Coursera, as part of their Data Science Specialization. You can find more about it <a href="https://www.coursera.org/specializations/jhu-data-science">here</a>.<br>
+<br/></p>
+
+<h1>Starting with XGBoost for Classification</h1>
+
+<p><br/></p>
+
+<p>The app built as a result of this assignment is a simple Shiny App to help you start with XGBoost for classification problems. XGBoost is a famous implementation of the gradient boosting frame. It is widely used amongst the community, and usually yields great results.</p>
+
+<p><br/></p>
+
+<p>You can find more about XGBoost <a href="https://xgboost.readthedocs.io/en/latest//">here</a></p>
+
+<p><br/></p>
+
+<p>This app allows you to train a predictor using the XGBoost package and the caret package. It allows you to tune your XGBoost model and select the best model using cross-validation (10 fold). </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Walkthrough</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><br/></p>
+
+<h1>Choose your dataset</h1>
+
+<p><br/>
+First you have to choose a dataset. You can either upload your own dataset or choose between the two available datasets. The current available datasets are the <a href="https://github.com/paulhendricks/titanic">Titanic dataset</a> and the <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/iris.html">Iris dataset</a>.</p>
+
+<p><br/>
+Be careful to not use a super large dataset, this is just an introduction so the app is not fit to run on large datasets.</p>
+
+<p><br/>
+After uploading your dataset, you will be prompted to choose your target column. This is the column your model will try to predict. Then, you will have to choose the features your model will use to predict your target column.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Tuning parameters</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>After choosing your dataset you will have to set the parameters to be tuned. Since this is just an introduction to XGBoost you will only have the option to tune 3 parameters, you will have to fix one parameter and choose possible values for the others.
+ They are:
+<br/></p>
+
+<ul>
+<li><p><strong>Max Depth</strong>: Maximum depth of a tree, increase this value will make the model more complex / likely to be overfitting.</p></li>
+<li><p><strong>Number of Rounds</strong>: This is the number of iterations the boosting algorithm will go through. Increase this value will make the model likely to be overfitting.</p></li>
+<li><p><strong>Learning Rate</strong>: Step size shrinkage used in update to prevents overfitting. After each boosting step, we can directly get the weights of new features, and the learning rate actually shrinks the feature weights to make the boosting process more conservative.</p></li>
+</ul>
+
+<p><br/>
+The result of the model tuning will be a graph showing the metric (ROC for binary classification and Accuracy for multi-class) as a function of the parameters.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h1>Example</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Let&#39;s see how it works for the Titanic dataset. We will try to predict if a person would survive based on her age, sex and class.</p>
+
+<p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Walkthrough'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Tuning parameters'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Example'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
